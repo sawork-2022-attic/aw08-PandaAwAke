@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: handleOrder
+        bindings:
+          handleOrder-in-0: order-service
+      bindings:
+        order-service:
+          destination: output
+#      rabbit:
+#        bindings:
+#          output:
+#            consumer:
+#              declare-exchange: false
+  session:
+    store-type: jdbc
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
